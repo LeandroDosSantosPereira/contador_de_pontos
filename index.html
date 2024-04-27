@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contador de Pontos</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<style>
+  .counter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding: 0 10%;
+  }
+  .btn-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    font-size: 2em;
+  }
+  .score {
+    font-size: 5em;
+    position: absolute;
+    margin-bottom: 120px; /* Ajuste a distância dos contadores para os botões */
+  }
+  #leftScore {
+    left: 10%; /* Ajuste a posição do contador azul */
+  }
+  #rightScore {
+    right: 10%; /* Ajuste a posição do contador vermelho */
+  }
+  .reset {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+  }
+</style>
+</head>
+<body>
+<div class="container counter">
+  <span id="leftScore" class="score">0</span>
+  <button class="btn btn-primary btn-circle" onclick="addPoint('left')">+</button>
+  <button class="btn btn-secondary reset" onclick="resetCounter()">zerar</button>
+  <button class="btn btn-danger btn-circle" onclick="addPoint('right')">+</button>
+  <span id="rightScore" class="score">0</span>
+</div>
+
+<script>
+  let leftScore = 0;
+  let rightScore = 0;
+
+  function addPoint(side) {
+    if (side === 'left') {
+      leftScore++;
+      document.getElementById('leftScore').textContent = leftScore;
+    } else if (side === 'right') {
+      rightScore++;
+      document.getElementById('rightScore').textContent = rightScore;
+    }
+  }
+
+  function resetCounter() {
+    leftScore = 0;
+    rightScore = 0;
+    document.getElementById('leftScore').textContent = leftScore;
+    document.getElementById('rightScore').textContent = rightScore;
+  }
+</script>
+</body>
+</html>
